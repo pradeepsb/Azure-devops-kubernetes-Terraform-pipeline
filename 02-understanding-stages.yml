@@ -10,21 +10,26 @@ stages:
   - job: FirstJob
     steps:
     - bash: echo build FirstJob
+    - bash: echo $(PipelineLivelVariable)
   - job: SecondJob
     steps:
     - bash: echo build SecondJob
 - stage: DevDeploy
+  variables:
+    environment: Dev
   dependsOn: Build
   jobs:
   - job: DevDeployJob
     steps:
-    - bash: echo build DevDeployJob
+    - bash: echo $(environment)DeployJob
 - stage: QADeploy
+  variables:
+    environment: Dev
   dependsOn: Build
   jobs:
   - job: QADeployJob
     steps:
-    - bash: echo build QADeployJob
+    - bash: echo $(environment)DeployJob
 - stage: ProdDeploy
   dependsOn:
   - DevDeploy
