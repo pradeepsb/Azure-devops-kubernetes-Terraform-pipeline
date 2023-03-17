@@ -20,7 +20,7 @@ stages:
       displayName: Build an image
       inputs:
         containerRegistry: 'psb-dockerhub'
-        repository: 'pradeepsb1\currency-exchange-devops'
+        repository: 'pradeepsb1\practise1'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: '$(tag)'
